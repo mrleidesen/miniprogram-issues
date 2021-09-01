@@ -82,3 +82,17 @@ onClick() {
 ```
 
 [回到顶部](#微信小程序踩坑记录)
+
+## swiper真机圆角问题
+目前发现 iOS 真机下 swiper 无法显示圆角，查找资料后加上 `transform: translateY(0);` 可行
+```css
+swiper {
+  overflow: hidden;
+  border-radius: 100%;
+  transform: translateY(0);
+}
+```
+
+参考：[https://developers.weixin.qq.com/community/develop/doc/00026658428810dd8c07c062556400](https://developers.weixin.qq.com/community/develop/doc/00026658428810dd8c07c062556400)
+
+[回到顶部](#微信小程序踩坑记录)

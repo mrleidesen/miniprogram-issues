@@ -96,3 +96,10 @@ swiper {
 参考：[https://developers.weixin.qq.com/community/develop/doc/00026658428810dd8c07c062556400](https://developers.weixin.qq.com/community/develop/doc/00026658428810dd8c07c062556400)
 
 [回到顶部](#微信小程序踩坑记录)
+
+## rotate问题
+目前发现安卓真机下，`rotate: 45deg;` 会出问题不生效，建议使用 `transform: rotate(45deg);`
+
+其他例如：`scale` 等也建议使用 `transform`
+
+[回到顶部](#微信小程序踩坑记录)

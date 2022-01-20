@@ -1,6 +1,24 @@
 # 微信小程序踩坑记录
 记录平日小程序开发中出现的坑和解决方法，原本记录在 [FrontendIssues](https://github.com/mrleidesen/FrontEndIssues) 中，发现太乱了就拆出来新开一个仓库
 
+## UDPSocket
+不得不说微信开发文档像坨屎...
+
+```js
+const udp = wx.createUDPSocket()
+udp.bind()
+udp.send({
+  address: '192.168.193.2',
+  port: 8848,
+  message: 'hello, how are you'
+})
+```
+
+上面这个是官方文档，如果你在`真机调试`的时候发现报错
+> cannot read property 'bind' of undefined
+
+请在`真机预览`下使用，因为这玩意儿不支持真机调试，文档也不说，我服啦！
+
 ## movable-view
 `movable-view` 这个组件内部无法滚动设置了 `overflow: scroll` 样式的元素（尚未解决）
 

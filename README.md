@@ -121,3 +121,57 @@ swiper {
 其他例如：`scale` 等也建议使用 `transform`
 
 [回到顶部](#微信小程序踩坑记录)
+
+## scroll-view自适应
+正常 `scroll-view` 需要给一个高度才能正常使用，如果我们希望在布局中把剩余高度分配给它，可以这么写
+
+### flex
+```html
+<view class="wrapper">
+  <view class="content"></view>
+  <scroll-view class="scroll"></scroll-view>
+</view>
+```
+
+```css
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.content {
+  flex-shrink: 0;
+  height: 200rpx;
+}
+
+.scroll {
+  flex: 1;
+  // 必须加上 height: 1px ，具体原理不清楚，但能用，暂且认为是微信的 bug
+  height: 1px;
+}
+```
+
+### vh
+这种只适合知道高度的情况
+
+```html
+<view class="wrapper">
+  <view class="content"></view>
+  <scroll-view class="scroll"></scroll-view>
+</view>
+```
+
+```css
+.wrapper {
+  height: 100vh;
+}
+
+.content {
+  height: 200rpx;
+}
+
+.scroll {
+  height: calc(100vh - 200rpx);
+}
+```

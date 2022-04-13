@@ -175,3 +175,43 @@ swiper {
   height: calc(100vh - 200rpx);
 }
 ```
+
+[回到顶部](#微信小程序踩坑记录)
+
+## model:value 报警告
+如果你在小程序使用 model:value 可能会有一连串的警告
+```html
+<input 
+  model:value="{{msg}}" 
+  type="text" 
+  placeholder="请输入您的留言" 
+/>
+```
+
+```shell
+Do not have  handler in component: pages/xxx/index. Please make sure that  handler has been defined in pages/xxx/index.
+```
+
+需要加上一个空的 `bindinput` 方法
+
+```html
+<input 
+  bindinput="handleInputChange" 
+  model:value="{{msg}}" 
+  type="text" 
+  placeholder="请输入您的留言" 
+/>
+```
+
+```js
+Page({
+  data: { msg: '' },
+  
+  handleInputChange() {}
+})
+```
+
+这样就不会报警告了...小程序，真是有无穷的坑
+
+
+[回到顶部](#微信小程序踩坑记录)
